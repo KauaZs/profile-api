@@ -32,14 +32,19 @@ export default async function changeProfile(req: FastifyRequest<{Querystring: qu
             avatar: z.string().url().optional(),
             banner: z.string().url().optional(),
             aboutme: z.string().max(200).optional(),
-            colorBakcground: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
+            colorBackground: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),  
             colorCard: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
             effectSpace: z.boolean().optional(),
-        });
-
+            socials: z.object({
+                github: z.string().url().optional(),
+                discord: z.string().url().optional(),
+            })
+         });
+        
         const updateUserSchema = z.object({
             profileOptions: profileOptionsSchema.partial().optional(),
         });
+        
     
         const validatedData = updateUserSchema.parse(req.body) as any;
 

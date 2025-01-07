@@ -1,5 +1,10 @@
 import  mongoose, { Schema } from "mongoose";
 
+interface ISocials {
+    github: string,
+    discord: string
+}
+
 interface profilePreferences {
     displayName: string, 
     avatar: string,
@@ -7,7 +12,8 @@ interface profilePreferences {
     aboutme: string,
     colorBakcground: string,
     colorCard: string,
-    effectSpace: boolean
+    effectSpace: boolean,
+    socials: ISocials
 }
 
 interface userProps {
@@ -24,9 +30,13 @@ const userModel = new Schema<userProps>({
         avatar: { type: String },
         banner: { type: String },
         aboutme: { type: String, default: 'Hello, welcome to my profile' },
-        colorBakcground: { type: String, default: '#111827' },
+        colorBakckground: { type: String, default: '#111827' },
         colorCard: { type: String, default: '#1f2937' },
-        effectSpace: { type: Boolean, default: true }
+        effectSpace: { type: Boolean, default: true },
+        socials: {
+            github: { type: String, default: '' },
+            discord: { type: String, default: '' }
+        }
     }
 }, {
     versionKey: false
