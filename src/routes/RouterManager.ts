@@ -8,7 +8,7 @@ import * as botController from '../controllers/profileControler'
 export default async function Router(fastify: FastifyInstance) {
     fastify.get('/api/auth/callback', botController.callbackRoute)
     fastify.get('/api/auth', botController.authRoute)
-    fastify.get('/api/@me/', botController.getUserRoute)
+    fastify.get('/api/@me', botController.getUserRoute)
     fastify.get('/api/auth/logout', botController.logoutRoute)
 
     fastify.get('/api/users/:username', botController.findUserRoute)
