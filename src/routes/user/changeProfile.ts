@@ -45,14 +45,14 @@ export default async function changeProfile(req: FastifyRequest<{Querystring: qu
         const validatedData = updateUserSchema.parse(req.body) as any;
 
         if (validatedData?.profileOptions?.displayName) {
-            const findName = await User.findOne({ profileOptions: { displayName: validatedData?.profileOptions?.displayName }})
+            const findName = await User.findOne({ 'profileOptions.displayName': validatedData?.profileOptions?.displayName });
             if (findName) return res.status(400)
                 .send({
                     "error": "This name is already being used",
                     "status": 400
                 })
         }
-        
+
         const updateFields: {[key: string]: any} = {};
 
         if (validatedData?.profileOptions) {
