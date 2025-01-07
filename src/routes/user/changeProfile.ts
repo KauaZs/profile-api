@@ -2,7 +2,6 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import dotenv from 'dotenv';
 import User from "../../models/User";
 import { z } from "zod";
-import getUserRoute from "../oauth2/user";
 
 interface query {
     userId: string
