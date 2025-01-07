@@ -2,6 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import dotenv from 'dotenv';
 import User from "../../models/User";
 import { z } from "zod";
+import getUserRoute from "../oauth2/user";
 
 interface query {
     userId: string
@@ -40,8 +41,18 @@ export default async function changeProfile(req: FastifyRequest<{Querystring: qu
         const updateUserSchema = z.object({
             profileOptions: profileOptionsSchema.partial().optional(),
         });
-
+    
         const validatedData = updateUserSchema.parse(req.body) as any;
+
+        if (validatedData?.profileOptions?.displayName) {
+            const findName = await User.findOne({ profileOptions: { displayName: validatedData?.profileOptions?.displayName }})
+            if (findName) return res.status(400)
+                .send({
+                    "error": "This name is already being used",
+                    "status": 400
+                })
+        }
+        
         const updateFields: {[key: string]: any} = {};
 
         if (validatedData?.profileOptions) {
