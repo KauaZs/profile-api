@@ -11,5 +11,7 @@ export default async function Router(fastify: FastifyInstance) {
     fastify.get('/api/@me/', botController.getUserRoute)
     fastify.get('/api/auth/logout', botController.logoutRoute)
 
+    fastify.get('/api/users/:username', botController.findUserRoute)
+
     fastify.post('/api/profile', botController.changeProfile)
 }
