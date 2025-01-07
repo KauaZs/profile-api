@@ -25,7 +25,7 @@ export default async function getUserRoute(req: FastifyRequest, res: FastifyRepl
     } catch(e: any) {
         return res.status(403).send({
             "error": "not authorized",
-            "status": 403
+            "status": 401
         })
     }
 }

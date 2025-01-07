@@ -6,7 +6,7 @@ export default async function logoutRoute(req: FastifyRequest, res: FastifyReply
     if (!user) return res.status(401)
         .send({
             "error": "you are not logged in",
-            "status": 401
+            "status": 400
         })
 
     res.clearCookie('user_discord', {

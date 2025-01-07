@@ -13,7 +13,7 @@ export default async function callbackRoute(req: FastifyRequest<{Querystring: qu
     const code = req.query?.code;
     if (!code) return res.status(401).send({
         "error": "code is not defined",
-        "status": 401
+        "status": 400
     });
 
     const token = await DiscordAuth.tokenRequest({
