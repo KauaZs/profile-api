@@ -2,6 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { DiscordAuth } from "../../utils/auth2Client";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv';
+import getUserData from "../../utils/database/getUserData";
 
 dotenv.config()
 interface query {
@@ -26,7 +27,8 @@ export default async function callbackRoute(req: FastifyRequest<{Querystring: qu
         expiresIn: '7d'
     })
 
-
+    await getUserData(user.id, user);
+    
     res
         .setCookie('user_discord', user_token, {
             path: '/'
