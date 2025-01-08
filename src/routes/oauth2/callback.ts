@@ -32,6 +32,6 @@ export default async function callbackRoute(req: FastifyRequest<{Querystring: qu
         .setCookie('user_discord', user_token, {
             path: '/'
         })
-        .redirect('http://localhost:5173/u/' + userData.profileOptions.displayName)
+        .redirect('/u/' + userData.profileOptions.displayName)
         
 }
