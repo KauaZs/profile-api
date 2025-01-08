@@ -27,12 +27,11 @@ export default async function callbackRoute(req: FastifyRequest<{Querystring: qu
         expiresIn: '7d'
     })
 
-    await getUserData(user.id, user);
-    
+    const userData = await getUserData(user.id, user);
     res
         .setCookie('user_discord', user_token, {
             path: '/'
         })
-        .redirect('http://localhost:5173/u')
+        .redirect('http://localhost:5173/u/' + userData.profileOptions.displayName)
         
 }
