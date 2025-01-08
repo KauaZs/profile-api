@@ -1,5 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import User from "../../models/User";
+import getDiscordData from "../../utils/getDiscordData";
+import {User as OAuthUser} from "discord-oauth2";
 interface params {
     username: string
 }
@@ -24,6 +26,8 @@ export default async function findUserRoute(req: FastifyRequest<{Params: params}
             "status": 400
         });
 
+    const userDiscord = getDiscordData(req.cookies.user_discord as string) as OAuthUser;
+        
     res.status(200)
-        .send(userData)
+        .send(Object.assign(userData, {userId: userDiscord.id as string}))
 }
