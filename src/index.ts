@@ -11,7 +11,7 @@ dotenv.config()
 fastify.register(fastifyCookie)
 fastify.register(fastifyCors)
 
-fastify.listen({ port: 3001 }, () => {
+fastify.listen({ port: 42977 }, () => {
     console.log('[profile-api] [stats] api online')
     connectMongo(process.env.MONGOSRV as string)
 })
