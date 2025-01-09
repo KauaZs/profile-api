@@ -9,7 +9,10 @@ const fastify = Fastify()
 dotenv.config()
 
 fastify.register(fastifyCookie)
-fastify.register(fastifyCors)
+fastify.register(fastifyCors, {
+    origin: 'https://kaurds.kauazs.tech', 
+    credentials: true  
+})
 
 fastify.listen({ port: 44187, host: '0.0.0.0' }, (err, address) => {
     if (err) {
