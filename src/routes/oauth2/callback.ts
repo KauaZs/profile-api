@@ -31,10 +31,6 @@ export default async function callbackRoute(req: FastifyRequest<{Querystring: qu
     res
         .setCookie('user_discord', user_token, {
             path: '/',
-            domain: '.kauazs.tech',
-            sameSite: 'none',
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
         })
     
         .redirect('https://kaurds.kauazs.tech/u/' + userData.profileOptions.displayName)
