@@ -1,5 +1,5 @@
 # Profile Api (Kaurds)
-Essa é uma api simples do projeto [ProfileCard](https://github.com/KauaZs/profile-card)
+This is a simple api of the [ProfileCard](https://github.com/KauaZs/profile-card) project
 
 1. Clone this repository:
    ```bash
