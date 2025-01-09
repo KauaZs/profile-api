@@ -5,7 +5,7 @@ import fastifyCors from '@fastify/cors';
 import connectMongo from './utils/connectDatabase';
 import dotenv from 'dotenv';
 
-const fastify = Fastify({ trustProxy: true })
+const fastify = Fastify({ trustProxy: 1 })
 dotenv.config()
 
 
