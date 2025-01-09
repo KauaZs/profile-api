@@ -8,11 +8,14 @@ import dotenv from 'dotenv';
 const fastify = Fastify()
 dotenv.config()
 
-fastify.register(fastifyCookie)
-fastify.register(fastifyCors, {
-    origin: 'https://kaurds.kauazs.tech', 
-    credentials: true  
+fastify.register(fastifyCookie, {
+    parseOptions: {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true
+    }
 })
+fastify.register(fastifyCors)
 
 fastify.listen({ port: 44187, host: '0.0.0.0' }, (err, address) => {
     if (err) {
