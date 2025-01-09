@@ -10,12 +10,12 @@ dotenv.config()
 
 
 fastify.register(fastifyCors, {
-    origin: 'https://kaurds.kauazs.tech',
+    origin: process.env.WEBSITE_URL,
     credentials: true
 })
 fastify.register(fastifyCookie)
 
-fastify.listen({ port: 44187, host: '0.0.0.0' }, (err, address) => {
+fastify.listen({ port: process.env.PORT as any, host: '0.0.0.0' }, (err, address) => {
     if (err) {
         fastify.log.error(err)
         process.exit(1)
