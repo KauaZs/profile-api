@@ -1,5 +1,5 @@
 # Profile Api (Kaurds)
-    Essa é uma api simples do projeto [ProfileCard](https://github.com/KauaZs/profile-card)
+This is a simple api of the [ProfileCard](https://github.com/KauaZs/profile-card) project
 
 1. Clone this repository:
    ```bash
@@ -17,7 +17,7 @@
    ```
 
 4. Create your .env file:
-   ```bash
+   ```env
     CLIENT_ID=YourClientId  # Get in: https://discord.com/developers
     CLIENT_SECRET=YourClientSecret #  Get in: https://discord.com/developers
     SECRET_KEY=MakeYouSecretKey  # Key Jwt
