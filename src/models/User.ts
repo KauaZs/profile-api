@@ -5,6 +5,10 @@ interface ISocials {
     discord: string
 }
 
+interface Stats {
+    views: number
+}
+
 interface profilePreferences {
     displayName: string, 
     avatar: string,
@@ -13,7 +17,8 @@ interface profilePreferences {
     colorBakcground: string,
     colorCard: string,
     effectSpace: boolean,
-    socials: ISocials
+    socials: ISocials,
+    stats: Stats
 }
 
 interface Cooldowns {
@@ -44,8 +49,11 @@ const userModel = new Schema<userProps>({
         socials: {
             github: { type: String, default: '' },
             discord: { type: String, default: '' }
+        },
+        stats: {
+            views: { type: Number, default: 0 }
         }
-    },
+    },  
 }, {
     versionKey: false
 })
